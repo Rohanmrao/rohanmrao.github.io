@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { contact, footer } from "@/content/portfolio";
+import { cn } from "@/lib/utils";
 
 export function ContactSection() {
   return (
     <section
       id="reachme"
-      className="scroll-mt-20 px-6 pb-16 pt-12 lg:scroll-mt-8 lg:px-14"
+      className={cn(
+        "snap-section scroll-mt-20 px-6 pb-16 pt-12 lg:scroll-mt-8 lg:px-14"
+      )}
     >
       <div className="relative mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-brand-muted/80 via-background to-secondary/40 p-10 shadow-inner dark:from-brand-muted/20 dark:via-background dark:to-secondary/10">
         <div
@@ -15,19 +18,21 @@ export function ContactSection() {
         <h2 className="relative font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           {contact.intro}
         </h2>
-        <div className="relative mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+        <div className="relative mt-10 flex w-full flex-nowrap items-stretch justify-center gap-2 overflow-x-auto pb-1 scrollbar-hide sm:gap-3">
           {contact.links.map((link) => (
             <Button
-              key={link.href}
+              key={link.href + link.label}
               size="lg"
-              className="min-w-[10rem] font-display text-base shadow-md"
+              className="shrink-0 min-w-[6.75rem] px-3 font-display text-sm shadow-md sm:min-w-[8.5rem] sm:px-6 sm:text-base"
               asChild
             >
               <a
                 href={link.href}
-                {...(link.href.startsWith("mailto:")
-                  ? {}
-                  : { target: "_blank", rel: "noopener noreferrer" })}
+                {...(link.download
+                  ? { download: link.download }
+                  : link.href.startsWith("mailto:")
+                    ? {}
+                    : { target: "_blank", rel: "noopener noreferrer" })}
               >
                 {link.label}
               </a>

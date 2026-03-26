@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-24 lg:px-14"
+      className="snap-section relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-24 lg:px-14"
     >
       <div
         className="pointer-events-none absolute -left-32 top-1/4 h-80 w-80 rounded-full bg-primary/25 blur-[100px] dark:bg-primary/20 animate-float"
@@ -34,17 +34,15 @@ export function HeroSection() {
           {hero.headline}
         </p>
         <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-          <span className="line-through decoration-primary/70 decoration-4">
-            {hero.strikeName}
-          </span>{" "}
           <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] bg-clip-text text-transparent dark:from-primary dark:via-foreground/90 dark:to-primary">
             {hero.name}
           </span>
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted-foreground sm:text-xl">
-          {hero.tagline}{" "}
-          <span className="font-medium text-foreground">+</span>{" "}
-          <span className="text-primary">{hero.subline}</span>
+          {hero.tagline}
+        </p>
+        <p className="mt-4 max-w-xl font-display text-base font-medium text-primary sm:text-lg">
+          {hero.subline}
         </p>
       </div>
     </section>

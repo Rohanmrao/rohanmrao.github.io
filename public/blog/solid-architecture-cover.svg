@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fafaf9"/>
+      <stop offset="100%" stop-color="#e7e5e4"/>
+    </linearGradient>
+    <linearGradient id="accentFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#ffedd5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sbg)"/>
+  <g transform="translate(180 120)">
+    <rect x="0" y="0" width="760" height="110" rx="12" fill="#ffffff" stroke="#d6d3d1" stroke-width="2"/>
+    <rect x="40" y="150" width="320" height="200" rx="12" fill="url(#accentFill)" stroke="#ea580c" stroke-width="3"/>
+    <rect x="400" y="150" width="320" height="200" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <path d="M360 250 L395 250" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M395 240 L410 250 L395 260 Z" fill="#64748b"/>
+    <text x="40" y="55" fill="#44403c" font-family="system-ui,sans-serif" font-size="26" font-weight="700">High-level policy</text>
+    <text x="60" y="240" fill="#9a3412" font-family="system-ui,sans-serif" font-size="20" font-weight="600">Abstractions</text>
+    <text x="440" y="240" fill="#334155" font-family="system-ui,sans-serif" font-size="20" font-weight="600">Adapters</text>
+    <text x="60" y="275" fill="#78716c" font-family="system-ui,sans-serif" font-size="16">Interfaces and contracts</text>
+    <text x="440" y="275" fill="#78716c" font-family="system-ui,sans-serif" font-size="16">DB, HTTP, queues</text>
+  </g>
+  <text x="60" y="560" fill="#57534e" font-family="system-ui,sans-serif" font-size="22" letter-spacing="0.12em">SOLID - BOUNDARIES - CHANGE</text>
+</svg>

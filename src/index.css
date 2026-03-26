@@ -62,6 +62,16 @@
 
   html {
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  html.snap-scroll-home {
+    scroll-snap-type: y mandatory;
   }
 
   body {
@@ -69,7 +79,29 @@
   }
 }
 
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @layer components {
+  .snap-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .blog-prose {
+    @apply prose prose-neutral max-w-none dark:prose-invert prose-headings:font-display prose-a:text-primary prose-img:rounded-xl prose-img:border prose-img:border-border;
+  }
+
   .hero-line {
     position: relative;
     overflow: hidden;

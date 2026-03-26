@@ -1,18 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+
 import { SiteShell } from "@/components/layout/site-shell";
-import { AboutSection } from "@/components/sections/about-section";
-import { ContactSection } from "@/components/sections/contact-section";
-import { ExperienceSection } from "@/components/sections/experience-section";
-import { HeroSection } from "@/components/sections/hero-section";
-import { ProjectsSection } from "@/components/sections/projects-section";
+import { BlogPostPage } from "@/pages/blog-post-page";
+import { HomePage } from "@/pages/home-page";
 
 export default function App() {
   return (
-    <SiteShell>
-      <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ContactSection />
-    </SiteShell>
+    <Routes>
+      <Route element={<SiteShell />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+      </Route>
+    </Routes>
   );
 }

@@ -1,5 +1,6 @@
 import { Menu } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
@@ -13,8 +14,20 @@ import {
 import { navItems } from "@/content/portfolio";
 import { cn } from "@/lib/utils";
 
-function scrollToId(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+function useGoToSection() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  return (id: string) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 130);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 }
 
 function NavLinks({
@@ -24,28 +37,31 @@ function NavLinks({
   className?: string;
   onNavigate?: () => void;
 }) {
+  const goToSection = useGoToSection();
+
   return (
     <nav className={cn("flex flex-col gap-1", className)}>
       {navItems.map((item) => (
-        <a
+        <button
           key={item.id}
-          href={`#${item.id}`}
-          className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:text-accent"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToId(item.id);
+          type="button"
+          className="text-left font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:text-accent"
+          onClick={() => {
+            goToSection(item.id);
             onNavigate?.();
           }}
         >
           {item.label}
-        </a>
+        </button>
       ))}
     </nav>
   );
 }
 
-export function SiteShell({ children }: { children: ReactNode }) {
+export function SiteShell() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const goToSection = useGoToSection();
 
   return (
     <div className="relative min-h-screen">
@@ -61,12 +77,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
         }}
       >
         <div className="flex flex-1 flex-col px-6 py-10">
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="group mb-10 block text-center"
             onClick={(e) => {
-              e.preventDefault();
-              scrollToId("home");
+              if (location.pathname === "/") {
+                e.preventDefault();
+                goToSection("home");
+              }
             }}
           >
             <img
@@ -75,9 +93,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
               className="mx-auto h-28 w-28 rounded-full border-4 border-primary object-cover shadow-lg transition-transform group-hover:scale-[1.02]"
             />
             <p className="mt-4 font-display text-lg font-bold tracking-tight text-foreground">
-              Rohanmrao
+              Rohan Mahesh Rao
             </p>
-          </a>
+          </Link>
           <NavLinks className="flex-1 gap-3 text-center" />
           <p className="mt-8 text-center text-xs text-muted-foreground">
             Scroll the story →
@@ -86,16 +104,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </aside>
 
       <header className="sticky top-0 z-40 flex items-center justify-between gap-3 border-b border-border/60 bg-background/75 px-4 py-3 backdrop-blur-md lg:hidden">
-        <a
-          href="#home"
+        <Link
+          to="/"
           className="font-display text-lg font-bold"
           onClick={(e) => {
-            e.preventDefault();
-            scrollToId("home");
+            if (location.pathname === "/") {
+              e.preventDefault();
+              goToSection("home");
+            }
           }}
         >
-          Rohanmrao
-        </a>
+          Rohan Rao
+        </Link>
         <div className="flex items-center gap-2">
           <ModeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
@@ -121,7 +141,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <ModeToggle />
       </div>
 
-      <main className="lg:pl-64">{children}</main>
+      <main className="lg:pl-64">
+        <Outlet />
+      </main>
     </div>
   );
 }

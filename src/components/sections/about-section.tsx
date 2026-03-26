@@ -1,12 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { about } from "@/content/portfolio";
+import { cn } from "@/lib/utils";
 
 export function AboutSection() {
   return (
     <section
       id="about"
-      className="scroll-mt-20 px-6 py-24 lg:scroll-mt-8 lg:px-14"
+      className={cn(
+        "snap-section scroll-mt-20 px-6 py-24 lg:scroll-mt-8 lg:px-14"
+      )}
     >
       <div className="mx-auto max-w-2xl">
         <Badge variant="brand" className="mb-4 font-display uppercase tracking-widest">
