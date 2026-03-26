@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { contact, footer } from "@/content/portfolio";
+import { withBaseUrl } from "@/lib/base-url";
 import { cn } from "@/lib/utils";
+
+function resolveContactHref(href: string): string {
+  if (href.startsWith("http") || href.startsWith("mailto:")) {
+    return href;
+  }
+  return withBaseUrl(href.startsWith("/") ? href : `/${href}`);
+}
 
 export function ContactSection() {
   return (
@@ -27,7 +35,7 @@ export function ContactSection() {
               asChild
             >
               <a
-                href={link.href}
+                href={resolveContactHref(link.href)}
                 {...(link.download
                   ? { download: link.download }
                   : link.href.startsWith("mailto:")

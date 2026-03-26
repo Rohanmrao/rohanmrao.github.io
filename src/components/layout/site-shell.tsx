@@ -12,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { navItems } from "@/content/portfolio";
+import { withBaseUrl } from "@/lib/base-url";
 import { cn } from "@/lib/utils";
 
 function useGoToSection() {
@@ -70,7 +71,7 @@ export function SiteShell() {
         style={{
           backgroundImage: `
             linear-gradient(165deg, hsl(var(--background) / 0.92) 0%, hsl(var(--background) / 0.75) 100%),
-            url(/static/sidebar.jpg)
+            url(${withBaseUrl("/static/sidebar.jpg")})
           `,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -88,7 +89,7 @@ export function SiteShell() {
             }}
           >
             <img
-              src="/static/rodman.jpg"
+              src={withBaseUrl("/static/rodman.jpg")}
               alt=""
               className="mx-auto h-28 w-28 rounded-full border-4 border-primary object-cover shadow-lg transition-transform group-hover:scale-[1.02]"
             />
