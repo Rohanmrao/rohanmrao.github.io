@@ -89,8 +89,8 @@ export function SiteShell() {
             }}
           >
             <img
-              src={withBaseUrl("/static/rodman.jpg")}
-              alt=""
+              src={withBaseUrl("/static/Farewell24_2.jpeg")}
+              alt="Rohan Mahesh Rao"
               className="mx-auto h-28 w-28 rounded-full border-4 border-primary object-cover shadow-lg transition-transform group-hover:scale-[1.02]"
             />
             <p className="mt-4 font-display text-lg font-bold tracking-tight text-foreground">
