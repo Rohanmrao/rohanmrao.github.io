@@ -1,5 +1,5 @@
+import solidCoverUrl from "@/assets/blog/solid-architecture-cover.svg?url";
 import type { BlogPost } from "@/content/blog/types";
-import { publicAsset } from "@/lib/public-asset";
 
 export const post: BlogPost = {
   slug: "solid-think-twice-code-later",
@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readingMinutes: 8,
   excerpt:
     "SOLID is not a checklist for tiny functions — it is a way to notice coupling and churn before they become production incidents.",
-  coverImage: publicAsset("/blog/solid-architecture-cover.svg"),
+  coverImage: solidCoverUrl,
   coverAlt: "Layered blocks and arrows suggesting modular architecture",
   body: `
 Most engineers meet **SOLID** in a classroom slide and then forget it until a service turns into a 3,000-line class that nobody dares to touch. The five principles are easy to quote and hard to apply *in context*. This post reframes them as **questions to ask before you merge**, not dogma to satisfy line-by-line.

@@ -1,5 +1,5 @@
+import ragCoverUrl from "@/assets/blog/rag-neo4j-cover.svg?url";
 import type { BlogPost } from "@/content/blog/types";
-import { publicAsset } from "@/lib/public-asset";
 
 export const post: BlogPost = {
   slug: "rag-knowledge-graph-neo4j-bedrock",
@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readingMinutes: 12,
   excerpt:
     "How graph structure, vector search, and managed LLMs fit together for retrieval-augmented generation — and why embeddings are the glue.",
-  coverImage: publicAsset("/blog/rag-neo4j-cover.svg"),
+  coverImage: ragCoverUrl,
   coverAlt: "Abstract graph nodes connecting to a vector field",
   body: `
 Retrieval-augmented generation (RAG) is often introduced as “chunk your docs, put them in a vector DB, call an LLM.” That works for many FAQs. The moment your domain has **relationships** — policies that reference entities, dependencies between services, or multi-hop questions — a flat pile of chunks starts to fight you. A **knowledge graph** gives you explicit structure; **vector embeddings** give you fuzzy, semantic similarity. Used together, they cover precision *and* recall.
