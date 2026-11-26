@@ -38,17 +38,21 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
-    role: "Junior Software Engineer",
-    period: "Jan 2024 — Mar 2026",
+    role: "Software Engineer",
+    period: "Jan 2024 — Present",
     org: "Kangasys Pty Ltd",
     location: "Bangalore",
     details: [
+      "Build and run a cloud platform that helps hospitals and large facilities monitor their equipment, energy, and safety systems — from the customer's problem through architecture, code, and support.",
+      "Lead backend development for the main ASP.NET APIs, owning architecture from controllers to services, SOLID practices, and code reviews.",
+      "Operate and scale services on AWS (ECS, App Runner, ECR, Lambda), with CI/CD across dev, staging, and production.",
+      "Maintain production databases (ClickHouse, PostgreSQL, Neo4j) — schema changes, query optimization, indexing, and stability at billions of rows.",
+      "Develop Odin, an in-house web tool for digitally modeling a site's assets, feeding a digital twin: a live model of a building, its equipment, and how they connect.",
+      "Build the search and retrieval behind KanGPT, an assistant that answers questions about a building in plain English.",
+      "Build fault detection that helps engineers spot equipment that is not behaving as it should.",
+      "Shape the product with customers, turning their operational problems into solution designs and shipped features.",
       "Designed and delivered KangaKonnect, an in-house site onboarding platform, improving product integration speed by 2×.",
-      "Led backend development for enterprise APIs using ASP.NET, owning end-to-end architecture from controllers to services, SOLID practices, and code reviews.",
-      "Architected and managed AWS production systems using App Runner, ECS, ECR, and Lambda.",
-      "Designed and maintained CI/CD across dev, staging, and production for reliable deployments.",
-      "Managed database performance for ClickHouse and PostgreSQL — query optimization, indexing, and stability at billions of rows.",
-      "Drove R&D on AI-driven capabilities and advanced data processing.",
+      "Set up agentic development workflows with clear briefs, independent verification, and human sign-off.",
     ],
   },
   {
