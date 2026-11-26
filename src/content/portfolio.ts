@@ -33,26 +33,67 @@ export type ExperienceItem = {
   period: string;
   org: string;
   location?: string;
-  details: string[];
+  intro?: string;
+  stats?: { value: string; label: string }[];
+  sections: { title?: string; bullets: string[] }[];
 };
 
+// In intro and bullets, {{text}} marks a figure and **text** marks an emphasised phrase.
 export const experience: ExperienceItem[] = [
   {
     role: "Software Engineer",
     period: "Jan 2024 — Present",
-    org: "Kangasys Pty Ltd",
+    org: "KangaSys Pty Ltd",
     location: "Bangalore",
-    details: [
-      "Build and run a cloud platform that helps hospitals and large facilities monitor their equipment, energy, and safety systems — from the customer's problem through architecture, code, and support.",
-      "Lead backend development for the main ASP.NET APIs, owning architecture from controllers to services, SOLID practices, and code reviews.",
-      "Operate and scale services on AWS (ECS, App Runner, ECR, Lambda), with CI/CD across dev, staging, and production.",
-      "Maintain production databases (ClickHouse, PostgreSQL, Neo4j) — schema changes, query optimization, indexing, and stability at billions of rows.",
-      "Develop Odin, an in-house web tool for digitally modeling a site's assets, feeding a digital twin: a live model of a building, its equipment, and how they connect.",
-      "Build the search and retrieval behind KanGPT, an assistant that answers questions about a building in plain English.",
-      "Build fault detection that helps engineers spot equipment that is not behaving as it should.",
-      "Shape the product with customers, turning their operational problems into solution designs and shipped features.",
-      "Designed and delivered KangaKonnect, an in-house site onboarding platform, improving product integration speed by 2×.",
-      "Set up agentic development workflows with clear briefs, independent verification, and human sign-off.",
+    intro:
+      "KangaSys turns data from building systems (air conditioning, power, fire, security) into dashboards, alerts and AI insights. Top code contributor to its main backend services; {{580+}} tickets closed.",
+    stats: [
+      { value: "580+", label: "tickets closed" },
+      { value: "1,200+", label: "code changes to the main REST API" },
+      { value: "340+ billion", label: "records in production databases (~13 TB compressed)" },
+      { value: "138,000", label: "raw sensor and control signals turned into a digital twin" },
+      { value: "~68% → 100%", label: "KanGPT sensor lookup coverage" },
+      { value: "10+ min → 22 s", label: "worst-case wait, now a reply limit" },
+      { value: "2,300+", label: "automated tests backing the AI service" },
+      { value: "2×", label: "faster site integration with KangaKonnect" },
+    ],
+    sections: [
+      {
+        title: "Current focus: Fiona Stanley Hospital, a major public hospital in Perth, Australia",
+        bullets: [
+          "Driving **product evolution and technical delivery** end to end: requirements, solution design, code, data accuracy checks with site engineers and keeping the customer confident and supported.",
+          "Built out **Odin**, our in-house web tool for **digitally modeling a site’s assets**: AI proposes equipment from raw building data, and engineers review and publish it (top code contributor).",
+          "Turned {{138,000}} raw sensor and control signals into a **digital twin**, a live model of the building and its {{33,000}} pieces of equipment.",
+          "Built a **fault detection engine** for a hospital producing {{300+ million}} sensor readings a week: {{70}} automated health checks, verified to match reference results exactly, flag failing air-conditioning equipment.",
+        ],
+      },
+      {
+        title: "Cloud services, APIs and databases",
+        bullets: [
+          "Operate and scale the platform’s **microservices on AWS (ECS, App Runner, Lambda)**: main API, core business engine, digital twin and fault detection engine.",
+          "Made hospital-scale data loads **resumable** and fixed memory crashes, so long jobs survive restarts and releases.",
+          "Handle the **main REST API** (C#, ASP.NET) as its top code contributor ({{1,200+}} code changes): dashboard and report features, security hardening, a .NET 10 upgrade and **CI/CD** releases to production.",
+          "Designed background processing that prepares dashboard results in advance, so screens load without searching raw data.",
+          "Maintain **production databases** (ClickHouse, PostgreSQL, Neo4j), including {{340+ billion}} records ({{~13 TB}} compressed): schema changes, query tuning, recovery of missing data and resolving a {{30-million-record}} migration mismatch.",
+          "Delivered **KangaKonnect**, a tool for setting up new customer sites, making integration {{2× faster}}; top contributor to the connector that sends on-site building data to AWS.",
+        ],
+      },
+      {
+        title: "AI products",
+        bullets: [
+          "Built the search layer of **KanGPT**, an assistant answering plain-English building questions using **retrieval-augmented generation (RAG)**, **LLMs**, a **knowledge graph** and **vector search**: sensor lookup coverage rose from {{~68% to 100%}}, and alarm totals overstated up to {{8×}} were corrected.",
+          "Slashed the worst-case wait from {{10+ minutes}} to a {{22 s}} reply limit and stress-tested accuracy with **large-scale automated evaluations** against real building data, on a service backed by {{2,300+}} automated tests.",
+          "Set up **agentic development workflows**, coordinating multiple AI agents with clear briefs, independent verification and human sign-off to get dependable results in building and testing.",
+        ],
+      },
+      {
+        title: "Security, product shaping and team leadership",
+        bullets: [
+          "**Drove the team** to tighten cybersecurity and was **instrumental in achieving ISO 27001 certification**; all {{4}} high-severity penetration-test findings were fixed and passed retest within {{three weeks}}.",
+          "**Shape the product** on recurring calls with {{five}} hospital and research sites: architect solutions to their operational problems and turn them into scoped work with delivery dates.",
+          "Scoped {{700+}} tickets and shared delivery across {{12+}} teammates; lead backend design and code reviews.",
+        ],
+      },
     ],
   },
   {
@@ -60,11 +101,13 @@ export const experience: ExperienceItem[] = [
     period: "Oct 2023 — Jan 2024",
     org: "Qualitas Technologies Pvt Ltd",
     location: "Bangalore",
-    details: [
-      "Developed and deployed production-grade deep learning pipelines in PyTorch and TensorFlow integrated into existing computer vision systems.",
-      "Implemented Vision Transformers (ViT) for classification and fault detection, improving inference speed by 3×.",
-      "Built AI workflow automation with Semantic Kernel and OpenAI APIs, orchestrating multi-step LLM pipelines in Python.",
-      "Contributed to Azure deployments and full-stack work with the MERN stack.",
+    sections: [
+      {
+        bullets: [
+          "Built image-recognition models for classification and fault detection (Vision Transformers, PyTorch, TensorFlow), improving **processing speed** by {{3×}}.",
+          "Automated multi-step AI workflows with OpenAI APIs and Semantic Kernel; supported Azure cloud and web app work.",
+        ],
+      },
     ],
   },
 ];
