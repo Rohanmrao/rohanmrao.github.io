@@ -1,49 +1,57 @@
-import { hero } from "@/content/portfolio";
+import { Button } from "@/components/ui/button";
+import { contact, experience, hero } from "@/content/portfolio";
+import { withBaseUrl } from "@/lib/base-url";
+import { scrollToSection } from "@/lib/scroll";
 
 export function HeroSection() {
+  const current = experience[0];
+  const github = contact.links.find((link) => link.label === "GitHub");
+
   return (
-    <section
-      id="home"
-      className="snap-section relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-24 lg:px-14"
-    >
-      <div
-        className="pointer-events-none absolute -left-32 top-1/4 h-80 w-80 rounded-full bg-primary/25 blur-[100px] dark:bg-primary/20 animate-float"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-20 bottom-1/4 h-72 w-72 rounded-full bg-accent/30 blur-[90px] dark:bg-accent/15 animate-float [animation-delay:-6s]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.2]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(var(--foreground) / 0.06) 1px, transparent 1px)`,
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden
-      />
-
-      <div className="hero-lines pointer-events-none absolute inset-y-0 right-[8%] hidden w-[min(40vw,28rem)] md:block">
-        <div className="hero-line hero-line-1 absolute left-1/4 top-0 h-full w-px bg-foreground/10" />
-        <div className="hero-line hero-line-2 absolute left-2/3 top-0 h-full w-px bg-foreground/10" />
-      </div>
-
-      <div className="relative max-w-3xl">
-        <p className="font-display text-sm font-semibold uppercase tracking-[0.35em] text-brand">
-          {hero.headline}
-        </p>
-        <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-          <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] bg-clip-text text-transparent dark:from-primary dark:via-foreground/90 dark:to-primary">
-            {hero.name}
-          </span>
-        </h1>
-        <p className="mt-6 max-w-xl text-lg text-muted-foreground sm:text-xl">
-          {hero.tagline}
-        </p>
-        <p className="mt-4 max-w-xl font-display text-base font-medium text-primary sm:text-lg">
-          {hero.subline}
-        </p>
+    <section id="home" className="section pt-10 sm:pt-20">
+      <div className="panel overflow-hidden shadow-[0_0_60px_-30px_hsl(var(--primary)/0.45)]">
+        <div className="flex items-center gap-2 border-b bg-muted/60 px-4 py-2.5" aria-hidden>
+          <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+          <span className="ml-2 font-mono text-xs text-muted-foreground">rohan@portfolio: ~</span>
+        </div>
+        <div className="grid gap-8 p-6 sm:p-10 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="min-w-0">
+            <p className="kicker" aria-hidden>
+              $ whoami
+            </p>
+            <p className="mt-4 font-mono text-sm text-muted-foreground">{hero.headline}</p>
+            <h1 className="mt-1 font-mono text-3xl font-bold leading-tight tracking-tight sm:text-5xl">{hero.name}</h1>
+            <p className="mt-3 font-mono text-sm text-primary">
+              {current.role} @ {current.org}
+            </p>
+            <p className="mt-5 max-w-xl text-lg text-muted-foreground">{hero.tagline}</p>
+            <p className="mt-4 font-mono text-sm text-brand">{`// ${hero.subline}`}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button className="font-mono" onClick={() => scrollToSection("experience")}>
+                View experience
+              </Button>
+              <Button variant="outline" className="font-mono" onClick={() => scrollToSection("blogs")}>
+                Read the blog
+              </Button>
+              {github ? (
+                <Button variant="ghost" className="font-mono" asChild>
+                  <a href={github.href} target="_blank" rel="noopener noreferrer">
+                    GitHub ↗
+                  </a>
+                </Button>
+              ) : null}
+            </div>
+          </div>
+          <img
+            src={withBaseUrl("/static/Farewell24_2.jpeg")}
+            alt="Rohan Mahesh Rao"
+            width={208}
+            height={208}
+            className="order-first h-28 w-28 rounded-lg border-2 border-primary/60 object-cover md:order-none md:h-52 md:w-52"
+          />
+        </div>
       </div>
     </section>
   );

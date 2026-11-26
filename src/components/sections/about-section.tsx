@@ -1,36 +1,29 @@
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { SectionHeading } from "@/components/section-heading";
 import { about } from "@/content/portfolio";
-import { cn } from "@/lib/utils";
 
 export function AboutSection() {
+  // Splits on commas and sentence ends only, so names such as "ASP.NET" stay whole.
+  const skills = about.skills.split(/,\s*|\.\s+|\.$/).filter(Boolean);
+
   return (
-    <section
-      id="about"
-      className={cn(
-        "snap-section scroll-mt-20 px-6 py-24 lg:scroll-mt-8 lg:px-14"
-      )}
-    >
-      <div className="mx-auto max-w-2xl">
-        <Badge variant="brand" className="mb-4 font-display uppercase tracking-widest">
-          {about.title}
-        </Badge>
-        <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          {about.lead}
-        </h2>
-        <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+    <section id="about" className="section">
+      <SectionHeading command="cat about.md" title={about.title} />
+      <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
+        <div className="space-y-5 leading-relaxed text-muted-foreground">
+          <p className="text-xl leading-relaxed text-foreground">{about.lead}</p>
           {about.body.map((p) => (
             <p key={p}>{p}</p>
           ))}
         </div>
-        <Separator className="my-10 bg-border/80" />
-        <div>
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-            {about.skillsLabel}
-          </p>
-          <p className="mt-3 text-base leading-relaxed text-foreground sm:text-lg">
-            {about.skills}
-          </p>
+        <div className="panel self-start p-6">
+          <h3 className="font-mono text-sm font-bold text-primary">{about.skillsLabel}</h3>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <li key={skill} className="rounded border bg-muted/60 px-2.5 py-1 font-mono text-xs">
+                {skill}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import type { BlogPost } from "@/content/blog/types";
 export const post: BlogPost = {
   slug: "digital-twin-knowledge-graph",
   title: "Modeling a building as a graph: a practical take on digital twins",
-  date: "2026-11-26",
+  date: "2026-02-27",
   readingMinutes: 4,
   excerpt:
     "A building is a web of places, equipment and signals. Model those relationships well and many hard questions become simple ones.",

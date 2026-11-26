@@ -4,7 +4,7 @@ import type { BlogPost } from "@/content/blog/types";
 export const post: BlogPost = {
   slug: "reliable-multi-agent-workflows",
   title: "Getting dependable results from multi-agent development workflows",
-  date: "2026-11-26",
+  date: "2026-10-21",
   readingMinutes: 4,
   excerpt:
     "More agents do not automatically mean better software. Clear briefs, independent checks and human gates are what make the output reliable.",

@@ -4,7 +4,7 @@ import type { BlogPost } from "@/content/blog/types";
 export const post: BlogPost = {
   slug: "trustworthy-rag-over-building-data",
   title: "Making a RAG assistant trustworthy over live building data",
-  date: "2026-11-26",
+  date: "2026-07-08",
   readingMinutes: 4,
   excerpt:
     "When people ask about real equipment, a fluent answer is not enough. Let the database do the facts, and let the model do the language.",

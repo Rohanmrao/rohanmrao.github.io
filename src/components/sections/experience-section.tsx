@@ -1,53 +1,35 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { SectionHeading } from "@/components/section-heading";
 import { experience } from "@/content/portfolio";
-import { cn } from "@/lib/utils";
 
 export function ExperienceSection() {
   return (
-    <section
-      id="experience"
-      className={cn(
-        "snap-section scroll-mt-20 border-y border-border/60 bg-muted/30 px-6 py-24 lg:scroll-mt-8 lg:px-14"
-      )}
-    >
-      <div className="mx-auto max-w-3xl">
-        <h2 className="font-display text-3xl font-bold tracking-tight text-foreground">
-          Experience
-        </h2>
-        <p className="mt-2 max-w-xl text-muted-foreground">
-          Shipping systems end to end — APIs, data, cloud, and ML.
-        </p>
-        <ul className="mt-12 space-y-6">
-          {experience.map((job) => (
-            <li key={`${job.role}-${job.period}`}>
-              <Card className="border-border/80 bg-card/80 shadow-md backdrop-blur-sm transition-shadow hover:shadow-lg dark:bg-card/60">
-                <CardHeader className="space-y-3 pb-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="secondary" className="font-normal">
-                      {job.period}
-                    </Badge>
-                    {job.location ? (
-                      <span className="text-xs text-muted-foreground">
-                        {job.location}
-                      </span>
-                    ) : null}
-                  </div>
-                  <CardTitle className="text-lg sm:text-xl">{job.role}</CardTitle>
-                  <p className="text-sm font-medium text-primary">{job.org}</p>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-inside list-disc space-y-2 text-sm leading-relaxed text-muted-foreground marker:text-primary sm:text-base">
-                    {job.details.map((line) => (
-                      <li key={line}>{line}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <section id="experience" className="section">
+      <SectionHeading command="git log --career" title="Experience" intro="Shipping systems end to end — APIs, data, cloud, and ML." />
+      <ol className="space-y-8 border-l pl-5 sm:pl-8">
+        {experience.map((job) => (
+          <li key={`${job.role}-${job.period}`} className="relative">
+            <span className="absolute -left-[calc(1.25rem+5px)] top-7 h-2.5 w-2.5 rounded-full bg-primary sm:-left-[calc(2rem+5px)]" aria-hidden />
+            <article className="panel panel-hover p-5 sm:p-7">
+              <p className="font-mono text-xs text-muted-foreground">
+                {job.period}
+                {job.location ? ` · ${job.location}` : ""}
+              </p>
+              <h3 className="mt-2 font-mono text-lg font-bold sm:text-xl">{job.role}</h3>
+              <p className="mt-1 text-sm font-medium text-primary">{job.org}</p>
+              <ul className="mt-5 space-y-2.5 leading-relaxed text-muted-foreground">
+                {job.details.map((line) => (
+                  <li key={line} className="flex gap-3">
+                    <span className="font-mono text-primary" aria-hidden>
+                      ›
+                    </span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }

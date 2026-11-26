@@ -1,39 +1,21 @@
+import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import { contact, footer } from "@/content/portfolio";
 import { withBaseUrl } from "@/lib/base-url";
-import { cn } from "@/lib/utils";
 
 function resolveContactHref(href: string): string {
-  if (href.startsWith("http") || href.startsWith("mailto:")) {
-    return href;
-  }
+  if (href.startsWith("http") || href.startsWith("mailto:")) return href;
   return withBaseUrl(href.startsWith("/") ? href : `/${href}`);
 }
 
 export function ContactSection() {
   return (
-    <section
-      id="reachme"
-      className={cn(
-        "snap-section scroll-mt-20 px-6 pb-16 pt-12 lg:scroll-mt-8 lg:px-14"
-      )}
-    >
-      <div className="relative mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-brand-muted/80 via-background to-secondary/40 p-10 shadow-inner dark:from-brand-muted/20 dark:via-background dark:to-secondary/10">
-        <div
-          className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/20 blur-3xl"
-          aria-hidden
-        />
-        <h2 className="relative font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          {contact.intro}
-        </h2>
-        <div className="relative mt-10 flex w-full flex-nowrap items-stretch justify-center gap-2 overflow-x-auto pb-1 scrollbar-hide sm:gap-3">
+    <section id="reachme" className="section pb-8">
+      <SectionHeading command="ping rohan" title="Reach me" intro={contact.intro} />
+      <div className="panel p-6 sm:p-8">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {contact.links.map((link) => (
-            <Button
-              key={link.href + link.label}
-              size="lg"
-              className="shrink-0 min-w-[6.75rem] px-3 font-display text-sm shadow-md sm:min-w-[8.5rem] sm:px-6 sm:text-base"
-              asChild
-            >
+            <Button key={link.href + link.label} variant="outline" size="lg" className="px-3 font-mono text-sm hover:border-primary" asChild>
               <a
                 href={resolveContactHref(link.href)}
                 {...(link.download
@@ -47,12 +29,9 @@ export function ContactSection() {
             </Button>
           ))}
         </div>
-        <p className="relative mt-10 text-center font-display text-xl text-foreground">
-          {contact.closing}
-        </p>
+        <p className="mt-6 font-mono text-sm text-primary">{contact.closing}</p>
       </div>
-
-      <footer className="mt-16 border-t border-border/40 pt-8 text-right text-sm text-muted-foreground">
+      <footer className="mt-16 border-t pt-6 font-mono text-xs text-muted-foreground">
         <p>
           {footer.name} · {footer.year}
         </p>
