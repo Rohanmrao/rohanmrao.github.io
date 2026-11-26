@@ -160,9 +160,10 @@ export const music = {
       "Prarthane (Kannada for “prayer”) is an original song I wrote, produced and performed: a prayer in Kannada, written from the heart for the one person it was meant for.",
       "Out now on Spotify and other streaming platforms.",
     ],
-    image: "/static/prarthane.jpg",
+    image: "/static/prarthane-bw.jpg",
     imageAlt: "Rohan Rao on a motorcycle",
     embedUrl: "https://open.spotify.com/embed/track/7sQ4W2k3f0KEvoa0fEsWUC",
+    trackUrl: "https://open.spotify.com/track/7sQ4W2k3f0KEvoa0fEsWUC",
   },
   closing: "Stay tuned for more.",
 };

@@ -15,8 +15,8 @@ export function MusicSection() {
         <img
           src={withBaseUrl(single.image)}
           alt={single.imageAlt}
-          width={576}
-          height={768}
+          width={672}
+          height={896}
           loading="lazy"
           className="mx-auto aspect-[3/4] w-full max-w-[14rem] self-start rounded-md border object-cover"
         />
@@ -37,6 +37,13 @@ export function MusicSection() {
             allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             className="mt-5 rounded-xl border-0"
           />
+          {/* Spotify's player can time out inside its own frame, which the page cannot detect. */}
+          <p className="mt-2 text-sm text-muted-foreground">
+            Player not loading?{" "}
+            <a href={single.trackUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">
+              Listen to {single.title} on Spotify
+            </a>
+          </p>
           <Button variant="outline" className="mt-4 font-mono" asChild>
             <a href={music.artistUrl} target="_blank" rel="noopener noreferrer">
               My Spotify artist page
