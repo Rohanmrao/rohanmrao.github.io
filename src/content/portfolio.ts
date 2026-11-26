@@ -3,6 +3,7 @@ export const navItems = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
+  { id: "music", label: "Music" },
   { id: "blogs", label: "Blog" },
   { id: "reachme", label: "Reach me" },
 ] as const;
@@ -21,7 +22,7 @@ export const about = {
   body: [
     "B.Tech in Electronics and Communication Engineering with a minor in Computer Science from PES University (8.0/10). Four-time DAC (Distinction Award Certificate) holder.",
     "Community development volunteer with the Dept. of ECE: computer literacy sessions and team-building activities for government school students.",
-    "Off the clock: guitar, basketball, and films.",
+    "Off the clock I'm an artist and producer; also guitar, basketball, and films.",
   ],
   skillsLabel: "Skills",
   skills:
@@ -146,6 +147,24 @@ export const publication: PublicationItem = {
   title: "FRedBots: Fundamental Reinforcement Learning Enabled Bots",
   venue: "IEEE",
   href: "https://doi.org/10.1109/ICCCR65461.2025.11072598",
+};
+
+export const music = {
+  title: "Artist and producer",
+  intro: "I write, produce and sing every song myself, chasing greatness one song at a time.",
+  artistUrl: "https://open.spotify.com/artist/6uuZTdxLwGJ1pktMnQ8aZJ",
+  single: {
+    title: "Prarthane",
+    label: "First single",
+    description: [
+      "Prarthane (Kannada for “prayer”) is an original song I wrote, produced and performed: a prayer in Kannada, written from the heart for the one person it was meant for.",
+      "Out now on Spotify and other streaming platforms.",
+    ],
+    image: "/static/prarthane.jpg",
+    imageAlt: "Rohan Rao on a motorcycle",
+    embedUrl: "https://open.spotify.com/embed/track/7sQ4W2k3f0KEvoa0fEsWUC",
+  },
+  closing: "Stay tuned for more.",
 };
 
 export type ContactLink = {

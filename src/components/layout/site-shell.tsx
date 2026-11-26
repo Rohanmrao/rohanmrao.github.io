@@ -54,11 +54,11 @@ export function SiteShell() {
             <span className="cursor" aria-hidden />
           </Link>
           <div className="flex items-center gap-2">
-            <NavLinks className="hidden md:flex" />
+            <NavLinks className="hidden lg:flex" />
             <ModeToggle />
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
+                <Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>

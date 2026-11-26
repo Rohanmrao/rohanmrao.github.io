@@ -26,6 +26,9 @@ export function HeroSection() {
             <p className="mt-3 font-mono text-sm text-primary">
               {current.role} @ {current.org}
             </p>
+            <button type="button" className="mt-1 font-mono text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline" onClick={() => scrollToSection("music")}>
+              Also an artist and producer ♪
+            </button>
             <p className="mt-5 max-w-xl text-lg text-muted-foreground">{hero.tagline}</p>
             <p className="mt-4 font-mono text-sm text-brand">{`// ${hero.subline}`}</p>
             <div className="mt-8 flex flex-wrap gap-3">
