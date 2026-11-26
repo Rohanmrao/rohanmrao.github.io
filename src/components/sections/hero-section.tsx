@@ -45,7 +45,7 @@ export function HeroSection() {
             </div>
           </div>
           <img
-            src={withBaseUrl("/static/Farewell24_2.jpeg")}
+            src={withBaseUrl("/static/profile.jpg")}
             alt="Rohan Mahesh Rao"
             width={208}
             height={208}
